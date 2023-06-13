@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "./variables.scss";
+
+@import "../components/navbar/Navbar.scss";
+@import "../components/themeChanger/ThemeChanger.scss";
+@import "../components/languageSelector/languageSelector.scss";
+@import "../components/socialMedia/SocialMedia.scss";
+@import "../components/userInfo/UserInfo.scss";
+@import "../components/contact/contact.scss";
+@import "../components/underConstruction/UnderConstruction.scss";
+
+.container {
+    max-width: $container-size;
+    width: 100%;
+    padding: $container-padding;
+    margin: 0 auto;
+}

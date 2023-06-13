@@ -1,0 +1,194 @@
+@import "../../styles/variables.scss";
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: $navbar-z;
+  background-color: rgba(255, 255, 255, 0.9);
+  user-select: none;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    backdrop-filter: blur(5px);
+  }
+
+  .container {
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .nav_logo {
+      font-size: 2rem;
+      @apply font-serif;
+      text-transform: capitalize;
+    }
+
+    // Toggle Styles
+    .nav_toggle {
+      transform: translateX(37px);
+
+      label {
+        display: block;
+        cursor: pointer;
+        width: 50vw;
+        height: 50vw;
+        max-width: 100px;
+        max-height: 100px;
+
+        input {
+          display: none;
+        }
+
+        // Checked State Styles
+        &.active svg {
+          .line__1,
+          .line__3 {
+            --length: 22.627416998;
+          }
+          .line__2 {
+            --length: 0;
+          }
+        }
+
+        // Line Styles
+        .line__1,
+        .line__3 {
+          --total-length: 126.64183044433594;
+        }
+        .line__2 {
+          --total-length: 70;
+        }
+
+        // Checked State Styles
+        &.active svg {
+          .line__1,
+          .line__3 {
+            --offset: -94.1149185097;
+          }
+          .line__2 {
+            --offset: -50;
+          }
+        }
+
+        // SVG Styles
+        svg {
+          path {
+            fill: none;
+            stroke: #fff;
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            --length: 24;
+            --offset: -38;
+            stroke-dasharray: var(--length) var(--total-length);
+            stroke-dashoffset: var(--offset);
+            transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+            @apply stroke-gray-800 dark:stroke-gray-100;
+          }
+        }
+      }
+    }
+  }
+
+  .sidebar {
+    position: absolute;
+    z-index: -1;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - var(--navHeight));
+    display: flex;
+    visibility: hidden;
+
+    &_bg {
+      flex: 1;
+      background-color: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(5px);
+      cursor: pointer;
+      transform: translateX(var(--sidebarWidth));
+      opacity: 0;
+      transition: .5s ease-out;
+    }
+
+    &_wrapper {
+      padding: 5rem 3rem;
+      min-width: 320px;
+      max-width: 500px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      background-color: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      overflow-y: auto;
+      transform: translateX(350px);
+      opacity: 0;
+      transition: .5s ease-out;
+
+      .nav_list {
+        @apply flex flex-col text-center w-full mx-auto;
+        margin-bottom: 2rem;
+        max-width: 300px;
+
+        .nav_item {
+          width: 100%;
+
+          &:not(:nth-child(1)) {
+            margin-top: 5px;
+          }
+
+          .nav_link {
+            @apply flex items-center justify-center rounded-md hover:bg-gray-700 hover:text-gray-100 dark:hover:bg-gray-300 dark:hover:text-gray-800 capitalize;
+            padding: .5rem;
+            font-weight: 500;
+
+            &.active {
+              @apply bg-gray-800 text-gray-100 dark:bg-gray-200 dark:text-gray-800;
+              cursor: default;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+
+    &.active {
+      visibility: visible;
+
+      .sidebar_bg {
+        transform: translateX(0);
+        opacity: 1;
+      }
+
+      .sidebar_wrapper {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.dark {
+  .navbar {
+    background-color: rgba(63, 75, 95, 0.9);
+
+    .sidebar {
+
+      &_wrapper {
+        background-color: rgba(63, 75, 95, 0.9);
+      }
+    }
+  }
+}

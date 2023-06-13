@@ -1,0 +1,180 @@
+
+
+.loginPage {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    @apply bg-gradient-to-r from-blue-400 to-indigo-400 flex items-center justify-center text-gray-800;
+    padding: 4rem 1rem;
+
+    .loading {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.6)
+    }
+
+    .wrapper {
+        @apply w-2/4 bg-gray-50 rounded-lg flex flex-col;
+        padding: 4rem 2rem;
+
+        .title {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .form {
+            @apply flex flex-col;
+            margin-bottom: 4rem;
+
+            .field {
+                @apply w-full flex flex-col;
+                margin-bottom: 1rem;
+
+                .row {
+                    @apply flex flex-wrap;
+
+                    .validation {
+                        margin-left: auto;
+                        text-align: right;
+                        @apply text-red-400;
+    
+                        &.show {
+                            opacity: 1;
+                            visibility: visible;
+                        }
+    
+                        &.hide {
+                            opacity: 0;
+                            visibility: hidden;
+                        }
+                    }
+                    
+                    label {
+                        user-select: none;
+                    }
+                }
+
+                .input_wrapper {
+                    @apply flex w-full border rounded-md overflow-hidden;
+
+                    input {
+                        @apply bg-gray-50 p-2 rounded-md;
+                        flex: 1;
+                    }
+
+                    .icon {
+                        @apply flex items-center justify-center p-4;
+                    }
+                }
+            }
+
+            button {
+                @apply rounded-md bg-gray-800 text-white py-4 px-10 mr-auto hover:bg-gray-700;
+                margin-bottom: 2rem;
+                user-select: none;
+            }
+
+            span {
+                user-select: none;
+
+                a {
+                    @apply text-blue-700;
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        .providers {
+            @apply flex flex-wrap gap-2;
+
+            button {
+                @apply flex items-center justify-center gap-2 rounded-md bg-gray-800 text-white py-4 px-10 mr-auto hover:bg-gray-700;
+                user-select: none;
+
+                span {
+                    font-size: 1rem;
+                }
+
+                svg {
+                    height: 1.5rem;
+                    fill: white;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .loginPage {
+
+        .wrapper {
+            @apply w-3/4;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .loginPage {
+
+        .wrapper {
+            
+            .title {
+                text-align: center;
+            }
+
+            .form {
+                button {
+                    @apply mx-auto;
+                }
+
+                span {
+                    text-align: center;
+                }
+            }
+
+            .providers {
+
+                button {
+                    @apply mx-auto;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .loginPage {
+
+        .wrapper {
+            @apply w-full;
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .loginPage {
+        padding: 3rem 1rem;
+
+        .wrapper {
+            padding: 2rem 1rem;
+
+            .title {
+                margin-bottom: 1.5rem;
+            }
+
+            .form {
+                margin-bottom: 2.5rem;
+
+                button {
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+    }
+}

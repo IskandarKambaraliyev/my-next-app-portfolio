@@ -1,0 +1,159 @@
+$blue-background: #c2e9f6;
+$blue-border: #72cce3;
+$blue-color: #96dcee;
+$yellow-background: #fffaa8;
+$yellow-border: #f5eb71;
+
+$indigo-background: #808fc7;
+$indigo-border: #5d6baa;
+$indigo-color: #6b7abb;
+$gray-border: #e8e8ea;
+$gray-dots: #e8e8ea;
+
+$white: #fff;
+
+@keyframes reverse {
+  0% {
+    left: 25px;
+    width: 18px;
+  }
+  60% {
+    left: 16px;
+    width: 26px;
+  }
+  100% {
+    left: 3px;
+  }
+}
+
+@keyframes switch {
+  0% {
+    left: 3px;
+  }
+  60% {
+    left: 3px;
+    width: 26px;
+  }
+  100% {
+    left: 25px;
+    width: 18px;
+  }
+}
+
+.themeChangeToggle {
+  width: 50px;
+  height: 28px;
+  background: $blue-color;
+  border-radius: 20px;
+  border: 2px solid $blue-border;
+  display: flex;
+  position: relative;
+  transition: all 350ms ease-in;
+  cursor: pointer;
+  
+  &.checked {
+    background: $indigo-color;
+    border-color: $indigo-border;
+    
+    .toggleLabel:before {
+      background: $white;
+      border-color: $gray-border;
+      animation-name: switch;
+      animation-duration: 350ms;
+      animation-fill-mode: forwards;
+    }
+    
+    .toggle:after {
+      transition-delay: 350ms;
+      opacity: 1;
+    }
+    
+    .toggleLabelBackground {
+      left: 14px;
+      width: 2px;
+      
+      &:before {
+        width: 2px;
+        height: 2px;
+        top: -2px;
+      }
+      
+      &:after {
+        width: 2px;
+        height: 2px;
+        left: -6px;
+        top: 5px;
+      }
+    }
+  }
+  
+  .toggleLabel {
+    position: relative;
+    
+    &:before {
+      animation-name: reverse;
+      animation-duration: 350ms;
+      animation-fill-mode: forwards;
+      transition: all 350ms ease-in;
+      content: "";
+      width: 18px;
+      height: 18px;
+      border: 2px solid $yellow-border;
+      top: 3px;
+      left: 3px;
+      position: absolute;
+      border-radius: 16px;
+      background: $yellow-background;
+    }
+  }
+
+  .toggleLabelBackground {
+    width: 4px;
+    height: 2px;
+    border-radius: 2px;
+    position: relative;
+    background: $white;
+    left: 27px;
+    top: 9px;
+    transition: all 150ms ease-in;
+    
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 12px;
+      height: 2px;
+      border-radius: 2px;
+      background: $white;
+      left: 0;
+      transition: all 150ms ease-in;
+    }
+    
+    &:after {
+      content: "";
+      position: absolute;
+      top: 4px;
+      width: 12px;
+      height: 2px;
+      border-radius: 2px;
+      background: $white;
+      left: 2px;
+      transition: all 150ms ease-in;
+    }
+  }
+
+  &:after {
+    transition-delay: 0ms;
+    transition: all 250ms ease-in;
+    position: absolute;
+    content: "";
+    box-shadow: $gray-dots -2.6px 0 0 0.4px, $gray-dots -4.8px 2.8px 0 -0.4px;
+    left: 28.6px;
+    top: 5.8px;
+    width: 2px;
+    height: 2px;
+    background: transparent;
+    border-radius: 50%;
+    opacity: 0;
+  }
+}

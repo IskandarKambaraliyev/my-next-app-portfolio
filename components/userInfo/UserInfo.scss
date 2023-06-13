@@ -1,0 +1,90 @@
+@import "../../styles/variables.scss";
+
+.userInfo {
+    @apply mx-auto mb-8 flex flex-col items-center;
+
+    .userImg {
+        @apply bg-gray-200 border-2 border-white shadow-lg;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        .user_icon {
+            svg {
+                width: 2.5rem;
+                height: 2.5rem;
+
+                path {
+                    @apply stroke-gray-500;
+                }
+            }
+        }
+
+        .user_img {
+            @apply w-full h-full;
+            object-fit: cover;
+        }
+    }
+
+    .user_name {
+        @apply text-center mt-3;
+    }
+}
+
+.userInfo_popup {
+    @apply fixed w-full h-full flex items-center justify-center;
+    z-index: $popup-z;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    cursor: pointer;
+    transform: scale(0);
+    opacity: 0;
+    visibility: hidden;
+    padding: 1rem;
+    
+    .wrapper {
+        padding: 5rem 4rem;
+        @apply bg-gray-100 rounded-lg text-center relative;
+        cursor: default;
+        overflow: hidden;
+        overflow-y: auto;
+        overflow-x: auto;
+        max-height: 100%;
+
+        .toggle {
+            position: absolute;
+            top: 1rem; 
+            right: 1rem;
+            cursor: pointer;
+            border-radius: 50%;
+            @apply bg-gray-800 text-white;
+
+            svg {
+                path {
+                    @apply fill-gray-800;
+                }
+            }
+        }
+
+        .info {
+            @apply text-gray-800;
+            cursor: text;
+            margin-bottom: .5rem;
+        }
+        
+        .btn {
+            @apply py-4 px-6 bg-gray-800 text-white rounded-md shadow-lg mt-4;
+        }
+    }
+
+    &.active {
+        transform: scale(1);
+        opacity: 1;
+        visibility: visible;
+    }
+}

@@ -1,0 +1,118 @@
+@import "../../styles/variables.scss";
+
+@keyframes socialMediaOpen {
+  0% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes socialMediaClose {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(10px);
+    opacity: 1;
+  }
+}
+
+.socialMedia {
+  position: fixed;
+  z-index: $socialMedia-z;
+  bottom: 3rem;
+  right: 3rem;
+
+  .main_btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    @apply flex items-center justify-center bg-gray-800 hover:bg-gray-600 shadow-lg border-2 border-white dark:bg-gray-100 dark:hover:bg-white dark:border-gray-950 dark:shadow-none;
+    cursor: pointer;
+
+    svg {
+      path {
+        @apply stroke-white dark:stroke-gray-800;
+      }
+    }
+  }
+
+  .wrapper {
+    position: absolute;
+    bottom: calc(100% + 1rem);
+    visibility: hidden;
+
+    .social_btn {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #ddd;
+      border-radius: 50%;
+      cursor: pointer;
+      @apply border-2 border-white shadow-lg overflow-hidden dark:shadow-none;
+
+      svg {
+        font-size: 1.5rem;
+      }
+
+      &:not(:nth-child(1)) {
+        margin-top: 1rem;
+      }
+
+      &:nth-child(1) {
+        @apply bg-white;
+        svg {
+          font-size: 50px;
+          @apply fill-sky-900 hover:fill-sky-800;
+        }
+      }
+      &:nth-child(2) {
+        @apply bg-rose-500 hover:bg-rose-600;
+
+        svg {
+          @apply fill-white;
+        }
+      }
+      &:nth-child(3) {
+        @apply bg-green-500 hover:bg-green-600;
+
+        svg {
+          font-size: 1.3rem;
+          @apply fill-white;
+        }
+      }
+      &:nth-child(4) {
+        @apply bg-cyan-800 hover:bg-cyan-700;
+
+        svg {
+          @apply fill-white;
+        }
+      }
+      &:nth-child(5) {
+        @apply bg-slate-700 hover:bg-slate-600;
+
+        svg {
+          @apply fill-white;
+        }
+      }
+    }
+  }
+
+  &.active {
+    .wrapper {
+      visibility: visible;
+
+      .social_btn {
+        animation: socialMediaOpen 350ms;
+      }
+    }
+  }
+}

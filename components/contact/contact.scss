@@ -1,0 +1,52 @@
+.contact_popup {
+  @apply w-full h-full fixed p-4 items-center justify-center;
+  z-index: $popup-z;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  visibility: hidden;
+  opacity: 0;
+  display: none;
+
+  .wrapper {
+    @apply bg-gray-50 rounded-lg overflow-hidden text-gray-800 relative;
+    cursor: default;
+    padding: 5rem 4rem;
+    max-height: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+
+    .toggle {
+        position: absolute;
+        top: 1rem; 
+        right: 1rem;
+        cursor: pointer;
+        border-radius: 50%;
+        @apply bg-gray-800 text-white;
+
+        svg {
+            path {
+                @apply fill-gray-800;
+            }
+        }
+    }
+  }
+
+  &.active {
+    visibility: visible;
+    opacity: 1;
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .contact_popup {
+
+    .wrapper {
+      padding: 2.5rem 1rem;
+    }
+  }
+}
