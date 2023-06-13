@@ -26,7 +26,7 @@ export default async function handler(req, res) {
     } else {
       return res
         .status(500)
-        .json({ message: "HTTP method not valid. only POST method is accepted" });
+        .json({ message: "HTTP method not valid. Only POST method is accepted" });
     }
   } catch (err) {
     return res.json({ error: "Connection failed with the database!" });

@@ -7,7 +7,7 @@ const Layout = ({children}) => {
     <div className="layout">
         <Navbar />
         <SocialMedia />
-        <main className='main' style={{paddingTop: navHeight ? navHeight+"px" : "120px"}}>{children}</main>
+        <main className='main' style={{paddingTop: navHeight ? navHeight+"px" : "100px"}}>{children}</main>
     </div>
   )
 }

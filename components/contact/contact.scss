@@ -33,6 +33,10 @@
             }
         }
     }
+
+    .btn {
+      @apply p-4 bg-gray-800 text-gray-100 rounded-md capitalize;
+    }
   }
 
   &.active {
